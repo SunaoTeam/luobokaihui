@@ -12,6 +12,7 @@
 #import "DemoViewController.h"
 #import "DownloadViewController.h"
 #import "BaiduMusicViewController.h"
+#import "Memo.h"
 
 @implementation AppDelegate
 
@@ -242,10 +243,13 @@
   
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
-    self.root=[Login create];
-    UINavigationController *nav=[QuickDialogController controllerWithNavigationForRoot:self.root];
-//    nav.navigationBar.hidden=YES;
+    Memo *mymemo=[[Memo alloc] init];
+    NSData *data=[NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"没那么简单" ofType:@"mp3"]];
+    [mymemo addMusicFile:data];
+    [mymemo release];
     
+    self.root=[[QRootElement alloc] initWithJSONFile:@"loginJson"];
+    UINavigationController *nav=[QuickDialogController controllerWithNavigationForRoot:self.root];
     [nav.navigationBar setBarStyle:UIBarStyleBlack];
     
     self.isFistLoadSound=YES;
@@ -254,7 +258,6 @@
     self.isFistLoadSound=NO;
     [self loadFinishedfiles];
     [self loadTempfiles];
-    [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
     
     [self.window addSubview:nav.view];
     self.window.rootViewController=nav;

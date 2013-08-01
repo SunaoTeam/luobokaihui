@@ -15,4 +15,5 @@
 -(NSArray*)loadOldFile;
 -(void)addNewFile:(NSString*)fileName contents:(NSString*)neirong;
 -(void)deleteOldFile:(NSString*)fileName;
+-(void)addMusicFile:(NSData*)songs;
 @end

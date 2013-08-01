@@ -1,0 +1,22 @@
+{
+	"grouped": false,
+	"title": "登陆",
+    "controllerName": "LoginController",
+	"sections": [
+                    { "elements":
+                         [
+                            { "type":"QLabelElement"},
+                            { "type":"QLabelElement"},
+                            { "type":"QLabelElement"},
+                            { "type":"QEntryElement", "key":"login",  "title":"          用户名：","placeholder":"Username"},
+                            {  "type":"QEntryElement","key":"password", "title":"          密码：", "placeholder":"Password",  "secureTextEntry":true }
+                         ]
+                    },
+                    { "elements":
+                        [
+                            { "type":"QLabelElement"},
+                            { "type":"QButtonElement", "key":"button", "title":"登陆", "controllerAction":"onLogin:"}
+                        ]
+                    }
+                ]
+}

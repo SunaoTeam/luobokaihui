@@ -20,7 +20,7 @@
 
 @interface LoginController ()
 - (void)onLogin:(QButtonElement *)buttonElement;
-//- (void)onAbout;
+- (void)onAbout;
 @property (nonatomic, retain) NSMutableArray *fileArray;
 
 @end
@@ -29,14 +29,14 @@
 
 - (void)setQuickDialogTableView:(QuickDialogTableView *)aQuickDialogTableView {
     [super setQuickDialogTableView:aQuickDialogTableView];
-
-//    self.quickDialogTableView.backgroundColor = [UIColor colorWithHue:0.1174 saturation:0.7131 brightness:0.8618 alpha:1.0000];
+    
+    //    self.quickDialogTableView.backgroundColor = [UIColor colorWithHue:0.1174 saturation:0.7131 brightness:0.8618 alpha:1.0000];
     self.quickDialogTableView.separatorStyle=NO;
-//    self.quickDialogTableView.backgroundColor = [UIColor colorWithRed:0.9582 green:0.9104 blue:0.7991 alpha:1.0000];
+    //    self.quickDialogTableView.backgroundColor = [UIColor colorWithRed:0.9582 green:0.9104 blue:0.7991 alpha:1.0000];
     self.quickDialogTableView.backgroundColor = [UIColor colorWithRed:0.3542 green:0.3532 blue:0.2548 alpha:1.0000];
     self.quickDialogTableView.bounces = NO;
     self.quickDialogTableView.styleProvider = self;
-
+    
     ((QEntryElement *)[self.root elementWithKey:@"login"]).delegate = self;
 }
 
@@ -53,10 +53,10 @@
 
 -(void) cell:(UITableViewCell *)cell willAppearForElement:(QElement *)element atIndexPath:(NSIndexPath *)indexPath{
     cell.backgroundColor = [UIColor colorWithRed:0.9582 green:0.9104 blue:0.7991 alpha:1.0000];
-
+    
     if ([element isKindOfClass:[QEntryElement class]] || [element isKindOfClass:[QButtonElement class]]){
-//        cell.textLabel.textColor = [UIColor colorWithRed:0.6033 green:0.2323 blue:0.0000 alpha:1.0000];
-         cell.textLabel.textColor = [UIColor blackColor];
+        //        cell.textLabel.textColor = [UIColor colorWithRed:0.6033 green:0.2323 blue:0.0000 alpha:1.0000];
+        cell.textLabel.textColor = [UIColor blackColor];
     }
 }
 
@@ -125,46 +125,58 @@
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示：" message:@"密码必须在4～16位之间" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
     }else{
-        //内网测试数据，为了保证程序的通用性，下面用假数据代替
-        //        NSURL *pasUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://172.16.2.16:8023/MeetingSystemss/LoginMeeting?username=%@&password=%@",info.login,info.password]];
-        //        ASIHTTPRequest *pasRequest = [ASIHTTPRequest requestWithURL:pasUrl];
-        //        [pasRequest startSynchronous];
-        //
-        //        NSError *loginError = [pasRequest error];
-        //        if(!loginError)
-        //        {
-        //            NSData *pasResponse = pasRequest.responseData;
-        //            NSDictionary *pasDic = [NSJSONSerialization JSONObjectWithData:pasResponse options:kNilOptions error:nil];
-        //            NSString *isYes = [pasDic objectForKey:@"flag"];
-        //            if ([isYes isEqualToString:@"YES"])
-        //            {
-        //                NSURL *conferenceUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://172.16.2.16:8023/MeetingSystemss/GetMeetingTitle?username=%@",info.login]];
-        //                ASIHTTPRequest *conferenceRequest = [ASIHTTPRequest requestWithURL:conferenceUrl];
-        //                [conferenceRequest startSynchronous];
-        //                NSError *conferenceError = [conferenceRequest error];
-        //                if (!conferenceError)
-        //                {
-        //                    NSData *conferenceResponse = conferenceRequest.responseData;
-        //                    NSDictionary *conferenceDic = [NSJSONSerialization JSONObjectWithData:conferenceResponse options:kNilOptions error:nil];
-        //                    NSArray *startArr = [conferenceDic objectForKey:@"start"];
-        //                    NSArray *endArr = [conferenceDic objectForKey:@"end"];
-        //                    NSMutableArray *startName = [[NSMutableArray alloc] initWithCapacity:0];
-        //                    NSMutableArray *endName = [[NSMutableArray alloc] initWithCapacity:0];
-        //                    for (int i = 0; i < startArr.count; i++) {
-        //                        [startName addObject:[[startArr objectAtIndex:i] objectForKey:@"Conference_title"]];
-        //                    }
-        //                    for (int i = 0; i < endArr.count; i++) {
-        //                        [endName addObject:[[endArr objectAtIndex:i] objectForKey:@"Conference_title"]];
-        //                    }
-        //                    ViewController *regist = [[ViewController alloc] init];
-        //                    [self.navigationController pushViewController:regist animated:YES];
-        //                }
-        //                else
-        //                {
-        //                    NSLog(@"%@",conferenceError);
-        //                }
-        //            }
         
+        dispatch_queue_t myQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_queue_t mainQueue=dispatch_get_main_queue();
+        
+        //内网测试数据，为了保证程序的通用性，下面用假数据代替
+        //        dispatch_async(myQueue, ^{
+        //            __block NSURL *pasUrl=nil;
+        //            __block ASIHTTPRequest *pasRequest=nil;
+        //            dispatch_sync(myQueue, ^{
+        //                pasUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://172.16.2.16:8023/MeetingSystemss/LoginMeeting?username=%@&password=%@",info.login,info.password]];
+        //                pasRequest = [ASIHTTPRequest requestWithURL:pasUrl];
+        //                [pasRequest startSynchronous];
+        //            });
+        //            dispatch_sync(mainQueue, ^{
+        //                NSError *loginError = [pasRequest error];
+        //                if(!loginError)
+        //                {
+        //                    NSData *pasResponse = pasRequest.responseData;
+        //                    NSDictionary *pasDic = [NSJSONSerialization JSONObjectWithData:pasResponse options:kNilOptions error:nil];
+        //                    NSString *isYes = [pasDic objectForKey:@"flag"];
+        //                    if ([isYes isEqualToString:@"YES"])
+        //                    {
+        //                        NSURL *conferenceUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://172.16.2.16:8023/MeetingSystemss/GetMeetingTitle?username=%@",info.login]];
+        //                        ASIHTTPRequest *conferenceRequest = [ASIHTTPRequest requestWithURL:conferenceUrl];
+        //                        [conferenceRequest startSynchronous];
+        //                        NSError *conferenceError = [conferenceRequest error];
+        //                        if (!conferenceError)
+        //                        {
+        //                            NSData *conferenceResponse = conferenceRequest.responseData;
+        //                            NSDictionary *conferenceDic = [NSJSONSerialization JSONObjectWithData:conferenceResponse options:kNilOptions error:nil];
+        //                            NSArray *startArr = [conferenceDic objectForKey:@"start"];
+        //                            NSArray *endArr = [conferenceDic objectForKey:@"end"];
+        //                            NSMutableArray *startName = [[NSMutableArray alloc] initWithCapacity:0];
+        //                            NSMutableArray *endName = [[NSMutableArray alloc] initWithCapacity:0];
+        //                            for (int i = 0; i < startArr.count; i++) {
+        //                                [startName addObject:[[startArr objectAtIndex:i] objectForKey:@"Conference_title"]];
+        //                            }
+        //                            for (int i = 0; i < endArr.count; i++) {
+        //                                [endName addObject:[[endArr objectAtIndex:i] objectForKey:@"Conference_title"]];
+        //                            }
+        //                            ViewController *regist = [[ViewController alloc] init];
+        //                            [self.navigationController pushViewController:regist animated:YES];
+        //                        }
+        //                        else
+        //                        {
+        //                            NSLog(@"%@",conferenceError);
+        //                        }
+        //                    }
+        //                }
+        //            });
+        //
+        //        });
         
         
         NSString *yonghuxinxi=@"{\"mahailong\":\"sunao\",\"majian\":\"sunao\",\"zhangjian\":\"sunao\",\"zhangwei\":\"sunao\",\"liuqingxuan\":\"sunao\"}";
@@ -187,6 +199,7 @@
                 
                 NSMutableArray *songs = [[NSMutableArray alloc] init];
                 Memo *mymemo=[[Memo alloc]init];
+                
                 self.fileArray = [[NSMutableArray alloc]initWithArray:[mymemo loadOldFile]];
                 NSLog(@"%@",self.fileArray);
                 
@@ -201,7 +214,13 @@
                     MCRelease(audioFile);
                 }
                 
-                MDAudioPlayerController *mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
+                NSData *data=[NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"没那么简单" ofType:@"mp3"]];
+                [mymemo addMusicFile:data];
+                
+                
+                //                [songs addObject:[[MDAudioFile alloc] initWithPath:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"没那么简单" ofType:@"mp3"]]]];
+                
+                MDAudioPlayerController *mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:nil];
                 
                 AudioView *view=[[AudioView alloc] init];
                 
@@ -254,7 +273,7 @@
 
 - (void)QEntryMustReturnForElement:(QEntryElement *)element andCell:(QEntryTableViewCell *)cell {
     NSLog(@"Must return");
-
+    
 }
 
 

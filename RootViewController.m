@@ -177,10 +177,12 @@
     
     [_sideMenu show];
 }
+
+
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex ==0) {
-        QRootElement *root=[Login create];
+        QRootElement *root=[[QRootElement alloc] initWithJSONFile:@"loginJson"];
         UINavigationController *nav=[QuickDialogController controllerWithNavigationForRoot:root];
         [nav.navigationBar setBarStyle:UIBarStyleBlack];
         [self.sideMenu setRootViewController:nav];
@@ -188,7 +190,5 @@
     
     
 }
-
-
 
 @end

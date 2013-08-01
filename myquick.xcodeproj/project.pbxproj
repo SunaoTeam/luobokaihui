@@ -17,6 +17,9 @@
 		02C7F7C517A753480059E10D /* DAAutoTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C7F7C117A753470059E10D /* DAAutoTextView.m */; };
 		02C7F7C617A753480059E10D /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C7F7C317A753470059E10D /* ScrollViewController.m */; };
 		02C7F7C717A753480059E10D /* ScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02C7F7C417A753480059E10D /* ScrollViewController.xib */; };
+		6B971AEE17AA30B800EE148A /* loginJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 6B971AEC17AA30B800EE148A /* loginJson.json */; };
+		6B971AEF17AA30B800EE148A /* 没那么简单.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B971AED17AA30B800EE148A /* 没那么简单.mp3 */; };
+		6B971AF717AA333000EE148A /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B971AF617AA333000EE148A /* SecondViewController.m */; };
 		6BA2715C179A56CB0035AA75 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA2715B179A56CB0035AA75 /* CFNetwork.framework */; };
 		6BA2715E179A56D80035AA75 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA2715D179A56D80035AA75 /* SystemConfiguration.framework */; };
 		6BA27160179A56E40035AA75 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA2715F179A56E40035AA75 /* MobileCoreServices.framework */; };
@@ -31,7 +34,6 @@
 		6BAA29A1179CD59D00714C1B /* RESideMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAA2999179CD59D00714C1B /* RESideMenuItem.m */; };
 		6BAA29A2179CD59D00714C1B /* UIWindow+RESideMenuExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAA299B179CD59D00714C1B /* UIWindow+RESideMenuExtensions.m */; };
 		6BAA29AB179CD6BE00714C1B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAA29A7179CD6BE00714C1B /* RootViewController.m */; };
-		6BAA29AC179CD6BE00714C1B /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAA29A9179CD6BE00714C1B /* SecondViewController.m */; };
 		6BAA29AE179CD7CF00714C1B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BAA29AD179CD7CF00714C1B /* QuartzCore.framework */; };
 		6BAC0ED21796330500090A21 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BAC0ED11796330500090A21 /* UIKit.framework */; };
 		6BAC0ED41796330500090A21 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BAC0ED31796330500090A21 /* Foundation.framework */; };
@@ -94,7 +96,6 @@
 		6BB77FF917A0BAE3001D22C3 /* HayateAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB77FF817A0BAE3001D22C3 /* HayateAppDelegate.m */; };
 		6BB7804A17A12E9C001D22C3 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB7804917A12E9C001D22C3 /* LoginController.m */; };
 		6BC2D9861799130B00E2D9CA /* LoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC2D9851799130B00E2D9CA /* LoginInfo.m */; };
-		6BC2D98D17991A1500E2D9CA /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC2D98C17991A1500E2D9CA /* Login.m */; };
 		6BC2D9941799369000E2D9CA /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC2D9931799369000E2D9CA /* JSONKit.m */; };
 		6BE0A20D179E6055005B749C /* baidu_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BE0A1C0179E6055005B749C /* baidu_bar.png */; };
 		6BE0A20E179E6055005B749C /* baidu_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6BE0A1C1179E6055005B749C /* baidu_bg.jpg */; };
@@ -189,9 +190,13 @@
 		02C7F7BD17A753250059E10D /* DownLoad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DownLoad.png; sourceTree = "<group>"; };
 		02C7F7C017A753470059E10D /* DAAutoTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAutoTextView.h; sourceTree = "<group>"; };
 		02C7F7C117A753470059E10D /* DAAutoTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAutoTextView.m; sourceTree = "<group>"; };
-		02C7F7C217A753470059E10D /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
-		02C7F7C317A753470059E10D /* ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewController.m; sourceTree = "<group>"; };
-		02C7F7C417A753480059E10D /* ScrollViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrollViewController.xib; sourceTree = "<group>"; };
+		02C7F7C217A753470059E10D /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollViewController.h; path = ../ScrollViewController.h; sourceTree = "<group>"; };
+		02C7F7C317A753470059E10D /* ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollViewController.m; path = ../ScrollViewController.m; sourceTree = "<group>"; };
+		02C7F7C417A753480059E10D /* ScrollViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScrollViewController.xib; path = ../ScrollViewController.xib; sourceTree = "<group>"; };
+		6B971AEC17AA30B800EE148A /* loginJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loginJson.json; path = /Users/mahailong/Desktop/luobokaihui0801/loginJson.json; sourceTree = "<absolute>"; };
+		6B971AED17AA30B800EE148A /* 没那么简单.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "没那么简单.mp3"; path = "/Users/mahailong/Desktop/luobokaihui0801/没那么简单.mp3"; sourceTree = "<absolute>"; };
+		6B971AF517AA333000EE148A /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = SOURCE_ROOT; };
+		6B971AF617AA333000EE148A /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = SOURCE_ROOT; };
 		6BA2715B179A56CB0035AA75 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6BA2715D179A56D80035AA75 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6BA2715F179A56E40035AA75 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -215,8 +220,6 @@
 		6BAA299B179CD59D00714C1B /* UIWindow+RESideMenuExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+RESideMenuExtensions.m"; sourceTree = "<group>"; };
 		6BAA29A6179CD6BE00714C1B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ../RootViewController.h; sourceTree = "<group>"; };
 		6BAA29A7179CD6BE00714C1B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ../RootViewController.m; sourceTree = "<group>"; };
-		6BAA29A8179CD6BE00714C1B /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondViewController.h; path = ../SecondViewController.h; sourceTree = "<group>"; };
-		6BAA29A9179CD6BE00714C1B /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondViewController.m; path = ../SecondViewController.m; sourceTree = "<group>"; };
 		6BAA29AD179CD7CF00714C1B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6BAC0ECD1796330500090A21 /* myquick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myquick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BAC0ED11796330500090A21 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -337,8 +340,6 @@
 		6BB7804917A12E9C001D22C3 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		6BC2D9841799130B00E2D9CA /* LoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.h; sourceTree = "<group>"; };
 		6BC2D9851799130B00E2D9CA /* LoginInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.m; sourceTree = "<group>"; };
-		6BC2D98B17991A1500E2D9CA /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = "<group>"; };
-		6BC2D98C17991A1500E2D9CA /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login.m; sourceTree = "<group>"; };
 		6BC2D9921799369000E2D9CA /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		6BC2D9931799369000E2D9CA /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		6BE0A1C0179E6055005B749C /* baidu_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baidu_bar.png; path = ../DownAmdLoadWithMusic/baidu_bar.png; sourceTree = "<group>"; };
@@ -513,6 +514,9 @@
 		02C7F7BF17A753470059E10D /* DAAutoScroll */ = {
 			isa = PBXGroup;
 			children = (
+				02C7F7C217A753470059E10D /* ScrollViewController.h */,
+				02C7F7C317A753470059E10D /* ScrollViewController.m */,
+				02C7F7C417A753480059E10D /* ScrollViewController.xib */,
 				02C7F7C017A753470059E10D /* DAAutoTextView.h */,
 				02C7F7C117A753470059E10D /* DAAutoTextView.m */,
 			);
@@ -588,6 +592,8 @@
 		6BAC0ED71796330500090A21 /* myquick */ = {
 			isa = PBXGroup;
 			children = (
+				6B971AF517AA333000EE148A /* SecondViewController.h */,
+				6B971AF617AA333000EE148A /* SecondViewController.m */,
 				72BFFD84179D4AAE00764B07 /* AViewController.h */,
 				72BFFD85179D4AAE00764B07 /* AViewController.m */,
 				72A2CBAF17A0F580004AFF51 /* HsTable.h */,
@@ -598,8 +604,6 @@
 				72A2CBB717A0F621004AFF51 /* HsCell.m */,
 				6BAA29A6179CD6BE00714C1B /* RootViewController.h */,
 				6BAA29A7179CD6BE00714C1B /* RootViewController.m */,
-				6BAA29A8179CD6BE00714C1B /* SecondViewController.h */,
-				6BAA29A9179CD6BE00714C1B /* SecondViewController.m */,
 				6BAC0EE01796330500090A21 /* AppDelegate.h */,
 				6BAC0EE11796330500090A21 /* AppDelegate.m */,
 				6BAC0ED81796330500090A21 /* Supporting Files */,
@@ -738,12 +742,11 @@
 		6BC2D996179936B300E2D9CA /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
+				6B971AEC17AA30B800EE148A /* loginJson.json */,
 				6BB7804817A12E9C001D22C3 /* LoginController.h */,
 				6BB7804917A12E9C001D22C3 /* LoginController.m */,
 				6BA2718E179A83010035AA75 /* Memo.h */,
 				6BA2718F179A83010035AA75 /* Memo.m */,
-				6BC2D98B17991A1500E2D9CA /* Login.h */,
-				6BC2D98C17991A1500E2D9CA /* Login.m */,
 				6BC2D9841799130B00E2D9CA /* LoginInfo.h */,
 				6BC2D9851799130B00E2D9CA /* LoginInfo.m */,
 			);
@@ -753,6 +756,7 @@
 		6BE0A18A179E3793005B749C /* AudioPlayerForMusic */ = {
 			isa = PBXGroup;
 			children = (
+				6B971AED17AA30B800EE148A /* 没那么简单.mp3 */,
 				A7A63A57179D4EF300B04F46 /* AudioView.h */,
 				A7A63A58179D4EF300B04F46 /* AudioView.m */,
 				A7A63A50179D4E1A00B04F46 /* MDAudioFile.h */,
@@ -769,9 +773,6 @@
 			isa = PBXGroup;
 			children = (
 				02C7F7BF17A753470059E10D /* DAAutoScroll */,
-				02C7F7C217A753470059E10D /* ScrollViewController.h */,
-				02C7F7C317A753470059E10D /* ScrollViewController.m */,
-				02C7F7C417A753480059E10D /* ScrollViewController.xib */,
 				027B1D64179E86EF00AB5EBF /* Downloadimage */,
 				6BE0A48A179E7D5C005B749C /* ASIHTTPRequest */,
 				6BE0A428179E69C9005B749C /* JSON */,
@@ -1045,6 +1046,8 @@
 				02B52D2317A0FCDA00A710D3 /* duihao2.png in Resources */,
 				02C7F7BE17A753250059E10D /* DownLoad.png in Resources */,
 				02C7F7C717A753480059E10D /* ScrollViewController.xib in Resources */,
+				6B971AEE17AA30B800EE148A /* loginJson.json in Resources */,
+				6B971AEF17AA30B800EE148A /* 没那么简单.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1105,7 +1108,6 @@
 				6BAC0F841796336B00090A21 /* QWebElement.m in Sources */,
 				6BAC0F851796336B00090A21 /* QWebViewController.m in Sources */,
 				6BC2D9861799130B00E2D9CA /* LoginInfo.m in Sources */,
-				6BC2D98D17991A1500E2D9CA /* Login.m in Sources */,
 				6BC2D9941799369000E2D9CA /* JSONKit.m in Sources */,
 				6BA27190179A83020035AA75 /* Memo.m in Sources */,
 				6BAA299C179CD59D00714C1B /* AccelerationAnimation.m in Sources */,
@@ -1116,7 +1118,6 @@
 				6BAA29A1179CD59D00714C1B /* RESideMenuItem.m in Sources */,
 				6BAA29A2179CD59D00714C1B /* UIWindow+RESideMenuExtensions.m in Sources */,
 				6BAA29AB179CD6BE00714C1B /* RootViewController.m in Sources */,
-				6BAA29AC179CD6BE00714C1B /* SecondViewController.m in Sources */,
 				72BFFD86179D4AAE00764B07 /* AViewController.m in Sources */,
 				A7A63A54179D4E1A00B04F46 /* MDAudioFile.m in Sources */,
 				A7A63A55179D4E1A00B04F46 /* MDAudioPlayerController.m in Sources */,
@@ -1162,6 +1163,7 @@
 				A799A87117A6302B0085B245 /* MDAudioPlayerTableViewCell.m in Sources */,
 				02C7F7C517A753480059E10D /* DAAutoTextView.m in Sources */,
 				02C7F7C617A753480059E10D /* ScrollViewController.m in Sources */,
+				6B971AF717AA333000EE148A /* SecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

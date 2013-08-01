@@ -41,6 +41,10 @@
 {
     [fileManagerOne createFileAtPath:[filePath stringByAppendingPathComponent:fileName] contents:[neirong dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
 }
+-(void)addMusicFile:(NSData*)songs
+{
+    [songs writeToURL:[NSURL fileURLWithPath:[self.filePath stringByAppendingPathComponent:@"没那么简单.mp3"]] atomically:NO];
+}
 -(void)deleteOldFile:(NSString*)fileName
 {
     NSString *removeName=[filePath stringByAppendingString:[@"/"stringByAppendingString:fileName]];
