@@ -193,10 +193,14 @@
 //    [img release];
     self.connList=[[[NSMutableArray alloc] init] autorelease];
     self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc]initWithTitle:@"音乐搜索" style:UIBarButtonItemStylePlain target:self action:@selector(showSearchBar)]autorelease];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(jump) name:@"jump" object:nil];
+
 }
 -(void)jump{
-    MBAlertView *please = [MBAlertView alertWithBody:@"选择的音乐已经开始下载!" cancelTitle:nil cancelBlock:nil];
+    MBAlertView *please = [MBAlertView alertWithBody:@"所选歌曲已经加入下载列表!" cancelTitle:nil cancelBlock:nil];
     please.size = CGSizeMake(280, 180);
     [please addButtonWithText:@"知道了" type:MBAlertViewItemTypePositive block:^{}];
     [please addToDisplayQueue];

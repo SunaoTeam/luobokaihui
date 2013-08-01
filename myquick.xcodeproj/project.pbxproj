@@ -155,7 +155,7 @@
 		A77E93B2179FEA240026E388 /* MBCheckMarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = A77E93A8179FEA240026E388 /* MBCheckMarkView.m */; };
 		A77E93B3179FEA240026E388 /* MBSpinningCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = A77E93AA179FEA240026E388 /* MBSpinningCircle.m */; };
 		A788018717AA37E5009B183A /* loginJson.json in Resources */ = {isa = PBXBuildFile; fileRef = A788018617AA37E5009B183A /* loginJson.json */; };
-		A788018A17AA3818009B183A /* 没那么简单.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A788018917AA3818009B183A /* 没那么简单.mp3 */; };
+		A788019D17AA6204009B183A /* zanwu1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A788019C17AA6204009B183A /* zanwu1.jpg */; };
 		A799A87117A6302B0085B245 /* MDAudioPlayerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A799A87017A6302B0085B245 /* MDAudioPlayerTableViewCell.m */; };
 		A7A63A54179D4E1A00B04F46 /* MDAudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A63A51179D4E1A00B04F46 /* MDAudioFile.m */; };
 		A7A63A55179D4E1A00B04F46 /* MDAudioPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A63A53179D4E1A00B04F46 /* MDAudioPlayerController.m */; };
@@ -442,7 +442,7 @@
 		A77E93A9179FEA240026E388 /* MBSpinningCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBSpinningCircle.h; sourceTree = "<group>"; };
 		A77E93AA179FEA240026E388 /* MBSpinningCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBSpinningCircle.m; sourceTree = "<group>"; };
 		A788018617AA37E5009B183A /* loginJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loginJson.json; sourceTree = "<group>"; };
-		A788018917AA3818009B183A /* 没那么简单.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "没那么简单.mp3"; path = "../../没那么简单.mp3"; sourceTree = "<group>"; };
+		A788019C17AA6204009B183A /* zanwu1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zanwu1.jpg; sourceTree = "<group>"; };
 		A799A86F17A6302B0085B245 /* MDAudioPlayerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAudioPlayerTableViewCell.h; sourceTree = "<group>"; };
 		A799A87017A6302B0085B245 /* MDAudioPlayerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAudioPlayerTableViewCell.m; sourceTree = "<group>"; };
 		A7A63A50179D4E1A00B04F46 /* MDAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDAudioFile.h; path = myquick/MDAudioFile.h; sourceTree = "<group>"; };
@@ -497,7 +497,6 @@
 		027B1D64179E86EF00AB5EBF /* Downloadimage */ = {
 			isa = PBXGroup;
 			children = (
-				A788018917AA3818009B183A /* 没那么简单.mp3 */,
 				02C7F7BD17A753250059E10D /* DownLoad.png */,
 				02B52D2217A0FCDA00A710D3 /* duihao2.png */,
 				02AABBF1179FB14600F52E1A /* Pause3.png */,
@@ -903,6 +902,7 @@
 		A7A63A63179D501E00B04F46 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A788019C17AA6204009B183A /* zanwu1.jpg */,
 				72A2CBBD17A0FD8A004AFF51 /* 001.png */,
 				72A2CBBE17A0FD8A004AFF51 /* 002.png */,
 				72A2CBBF17A0FD8A004AFF51 /* 004.png */,
@@ -1042,7 +1042,7 @@
 				02C7F7BE17A753250059E10D /* DownLoad.png in Resources */,
 				02C7F7C717A753480059E10D /* ScrollViewController.xib in Resources */,
 				A788018717AA37E5009B183A /* loginJson.json in Resources */,
-				A788018A17AA3818009B183A /* 没那么简单.mp3 in Resources */,
+				A788019D17AA6204009B183A /* zanwu1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

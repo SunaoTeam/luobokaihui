@@ -279,7 +279,6 @@
 -(void)requestReceivedResponseHeaders:(ASIHTTPRequest *)request
 {
     NSLog(@"收到回复了！");
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"jump" object:nil];
     FileModel *fileInfo=[request.userInfo objectForKey:@"File"];
     fileInfo.fileSize=[CommonHelper getFileSizeString:[[request responseHeaders] objectForKey:@"Content-Length"]];
 }

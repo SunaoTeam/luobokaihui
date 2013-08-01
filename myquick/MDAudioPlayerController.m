@@ -9,6 +9,7 @@
 #import "MDAudioPlayerController.h"
 #import "MDAudioFile.h"
 #import "MDAudioPlayerTableViewCell.h"
+#import "Memo.h"
 
 @interface MDAudioPlayerController ()
 - (UIImage *)reflectedImage:(UIButton *)fromImage withHeight:(NSUInteger)height;
@@ -174,22 +175,22 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
     }
     oldTakId = newTaskId;
     
+    Memo *mymemo=[[Memo alloc] init];
+    NSArray *arrays=[mymemo loadOldFile];
 	
 	updateTimer = nil;
     
-	UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@""];
-	self.toggleButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-	[toggleButton setImage:[UIImage imageNamed:@"AudioPlayerAlbumInfo.png"] forState:UIControlStateNormal];
-	[toggleButton addTarget:self action:@selector(showSongFiles) forControlEvents:UIControlEventTouchUpInside];
-	
-	UIBarButtonItem *songsListBarButton = [[UIBarButtonItem alloc] initWithCustomView:toggleButton];
-	
-	self.navigationItem.rightBarButtonItem = songsListBarButton;
-	[songsListBarButton release];
-	songsListBarButton = nil;
-	
-	[navItem release];
-	navItem = nil;
+    if ([arrays count]!=0) {
+        self.toggleButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        [toggleButton setImage:[UIImage imageNamed:@"AudioPlayerAlbumInfo.png"] forState:UIControlStateNormal];
+        [toggleButton addTarget:self action:@selector(showSongFiles) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIBarButtonItem *songsListBarButton = [[UIBarButtonItem alloc] initWithCustomView:toggleButton];
+        
+        self.navigationItem.rightBarButtonItem = songsListBarButton;
+        [songsListBarButton release];
+        songsListBarButton = nil;
+    }
 	
 	AudioSessionInitialize(NULL, NULL, interruptionListenerCallback, self);
 	AudioSessionSetActive(true);
@@ -256,10 +257,21 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
 	self.containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 44, self.view.bounds.size.width, self.view.bounds.size.height - 44)];
 	[self.view addSubview:containerView];
 	
-	self.artworkView = [[UIButton alloc] initWithFrame:CGRectMake(0, -60, 320, 380)];
-	[artworkView setImage:[selectedSong coverImage] forState:UIControlStateNormal];
-	[artworkView addTarget:self action:@selector(showOverlayView) forControlEvents:UIControlEventTouchUpInside];
+
+    if ([arrays count]==0) {
+        self.artworkView = [[UIButton alloc] initWithFrame:CGRectMake(0, -60, 320, 380)];
+        [artworkView setImage:[UIImage imageNamed:@"zanwu1.jpg"] forState:UIControlStateNormal];
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"没有歌曲情下载" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+        [alert show];
+        [alert release];
+    }else{
+        self.artworkView = [[UIButton alloc] initWithFrame:CGRectMake(0, -60, 320, 380)];
+        [artworkView setImage:[selectedSong coverImage] forState:UIControlStateNormal];
+        [artworkView addTarget:self action:@selector(showOverlayView) forControlEvents:UIControlEventTouchUpInside];
+
+    }
     
+	
 	artworkView.showsTouchWhenHighlighted = NO;
 	artworkView.adjustsImageWhenHighlighted = NO;
 	artworkView.backgroundColor = [UIColor clearColor];
@@ -270,7 +282,7 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
 	reflectionView.alpha = kDefaultReflectionFraction;
 	[self.containerView addSubview:reflectionView];
 	
-	self.songTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 368)];
+	self.songTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -20, self.view.bounds.size.width, 368)];
 	self.songTableView.delegate = self;
 	self.songTableView.dataSource = self;
 	self.songTableView.separatorColor = [UIColor colorWithRed:0.986 green:0.933 blue:0.994 alpha:0.10];
