@@ -242,11 +242,6 @@
   
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
-    Memo *mymemo=[[Memo alloc] init];
-    NSData *data=[NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"没那么简单" ofType:@"mp3"]];
-    [mymemo addMusicFile:data];
-    [mymemo release];
-    
     self.root=[[QRootElement alloc] initWithJSONFile:@"loginJson"];
     UINavigationController *nav=[QuickDialogController controllerWithNavigationForRoot:self.root];
     [nav.navigationBar setBarStyle:UIBarStyleBlack];

@@ -56,10 +56,15 @@
         
         RESideMenuItem *homeItem = [[RESideMenuItem alloc] initWithTitle:@"音乐播放器" action:^(RESideMenu *menu, RESideMenuItem *item) {
             
-            MDAudioPlayerController *viewController = [[MDAudioPlayerController alloc] init];
-            viewController = [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
-            viewController.title = item.title;
-            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+            MDAudioPlayerController *mdaudio=nil;
+            if ([self.fileArray count]==0) {
+                mdaudio=[[MDAudioPlayerController alloc] init];
+            }else{
+                mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
+            }
+            
+            mdaudio.title = item.title;
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mdaudio];
             
             [navigationController.navigationBar setBarStyle:UIBarStyleBlack];
             

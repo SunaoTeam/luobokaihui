@@ -145,7 +145,7 @@
                         Memo *mymemo=[[Memo alloc]init];
                         
                         self.fileArray = [[NSMutableArray alloc]initWithArray:[mymemo loadOldFile]];
-                        NSLog(@"%@",self.fileArray);
+                        NSLog(@"my file is %@",self.fileArray);
                         
                         [songs removeAllObjects];
                         for (NSString *song in self.fileArray)
@@ -153,21 +153,19 @@
                             NSString *soundFilePath=[mymemo.filePath stringByAppendingPathComponent:song];
                             //初始化音频类 并且添加播放文件,把音频文件转换成url格式
                             MDAudioFile *audioFile = [[MDAudioFile alloc] initWithPath:[NSURL fileURLWithPath:soundFilePath]];
-                            
                             [songs addObject:audioFile];
                             MCRelease(audioFile);
                         }
                         
-                        NSData *data=[NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"没那么简单" ofType:@"mp3"]];
-                        [mymemo addMusicFile:data];
-                        
-                        
-                        MDAudioPlayerController *mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
-                        
-                        AudioView *view=[[AudioView alloc] init];
+                        MDAudioPlayerController *mdaudio=nil;
+                        if ([self.fileArray count]==0) {
+                             mdaudio=[[MDAudioPlayerController alloc] init];
+                        }else{
+                             mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
+                        }
                         
                         [self.navigationController pushViewController:mdaudio animated:YES];
-                        MCRelease(view);
+
                         MCRelease(songs);
                         MCRelease(mymemo);
                         MCRelease(mdaudio);
@@ -210,17 +208,17 @@
 
 
 - (BOOL)QEntryShouldChangeCharactersInRangeForElement:(QEntryElement *)element andCell:(QEntryTableViewCell *)cell {
-    NSLog(@"Should change characters");
+//    NSLog(@"Should change characters");
     return YES;
 }
 
 - (void)QEntryEditingChangedForElement:(QEntryElement *)element andCell:(QEntryTableViewCell *)cell {
-    NSLog(@"Editing changed");
+//    NSLog(@"Editing changed");
 }
 
 
 - (void)QEntryMustReturnForElement:(QEntryElement *)element andCell:(QEntryTableViewCell *)cell {
-    NSLog(@"Must return");
+//    NSLog(@"Must return");
     
 }
 
