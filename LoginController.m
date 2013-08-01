@@ -20,7 +20,7 @@
 
 @interface LoginController ()
 - (void)onLogin:(QButtonElement *)buttonElement;
-- (void)onAbout;
+//- (void)onAbout;
 @property (nonatomic, retain) NSMutableArray *fileArray;
 
 @end
@@ -126,8 +126,8 @@
         [alert show];
     }else{
         
-        dispatch_queue_t myQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_queue_t mainQueue=dispatch_get_main_queue();
+//        dispatch_queue_t myQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//        dispatch_queue_t mainQueue=dispatch_get_main_queue();
         
         //内网测试数据，为了保证程序的通用性，下面用假数据代替
         //        dispatch_async(myQueue, ^{
@@ -220,7 +220,7 @@
                 
                 //                [songs addObject:[[MDAudioFile alloc] initWithPath:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"没那么简单" ofType:@"mp3"]]]];
                 
-                MDAudioPlayerController *mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:nil];
+                MDAudioPlayerController *mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
                 
                 AudioView *view=[[AudioView alloc] init];
                 

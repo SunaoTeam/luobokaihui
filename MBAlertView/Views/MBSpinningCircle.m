@@ -88,7 +88,7 @@
                                (id)sideColor.CGColor];
     CGFloat gradientLocations[] = {0, 0.5, 1};
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    return CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)gradientColors, gradientLocations);
+    return CGGradientCreateWithColors(colorSpace, ( CFArrayRef)gradientColors, gradientLocations);
 }
 
 -(void)drawAnnular

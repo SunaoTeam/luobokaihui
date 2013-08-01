@@ -83,7 +83,7 @@ const int INTERSTITIAL_STEPS = 99;
 - (void) showItems:(NSArray *)items
 {
     // Animate to deappear
-    __typeof (&*self) __weak weakSelf = self;
+    __typeof (&*self)  weakSelf = self;
     weakSelf.tableView.transform = CGAffineTransformScale(_tableView.transform, 0.9, 0.9);
     [UIView animateWithDuration:0.5 animations:^{
         weakSelf.tableView.transform = CGAffineTransformIdentity;
@@ -215,7 +215,7 @@ const int INTERSTITIAL_STEPS = 99;
     [CATransaction commit];
     
     if (_tableView.alpha == 0) {
-        __typeof (&*self) __weak weakSelf = self;
+        __typeof (&*self)  weakSelf = self;
         weakSelf.tableView.transform = CGAffineTransformScale(_tableView.transform, 0.9, 0.9);
         [UIView animateWithDuration:0.5 animations:^{
             weakSelf.tableView.transform = CGAffineTransformIdentity;
@@ -247,7 +247,7 @@ const int INTERSTITIAL_STEPS = 99;
     [CATransaction commit];
     [self performSelector:@selector(restoreView) withObject:nil afterDelay:0.4];
     
-    __typeof (&*self) __weak weakSelf = self;
+    __typeof (&*self)  weakSelf = self;
     [UIView animateWithDuration:0.2 animations:^{
         weakSelf.tableView.alpha = 0;
         weakSelf.tableView.transform = CGAffineTransformScale(_tableView.transform, 0.7, 0.7);
@@ -260,7 +260,7 @@ const int INTERSTITIAL_STEPS = 99;
 
 - (void)restoreView
 {
-    __typeof (&*self) __weak weakSelf = self;
+    __typeof (&*self)  weakSelf = self;
     [UIView animateWithDuration:0.2 animations:^{
         weakSelf.screenshotView.alpha = 0;
     } completion:^(BOOL finished) {
