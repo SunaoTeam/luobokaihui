@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "Login.h"
 #import "DemoViewController.h"
 #import "DownloadViewController.h"
 #import "BaiduMusicViewController.h"

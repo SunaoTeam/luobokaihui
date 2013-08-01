@@ -17,7 +17,6 @@
 		02C7F7C517A753480059E10D /* DAAutoTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C7F7C117A753470059E10D /* DAAutoTextView.m */; };
 		02C7F7C617A753480059E10D /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C7F7C317A753470059E10D /* ScrollViewController.m */; };
 		02C7F7C717A753480059E10D /* ScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02C7F7C417A753480059E10D /* ScrollViewController.xib */; };
-		6B971AF717AA333000EE148A /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B971AF617AA333000EE148A /* SecondViewController.m */; };
 		6BA2715C179A56CB0035AA75 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA2715B179A56CB0035AA75 /* CFNetwork.framework */; };
 		6BA2715E179A56D80035AA75 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA2715D179A56D80035AA75 /* SystemConfiguration.framework */; };
 		6BA27160179A56E40035AA75 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA2715F179A56E40035AA75 /* MobileCoreServices.framework */; };
@@ -193,8 +192,6 @@
 		02C7F7C217A753470059E10D /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollViewController.h; path = ../ScrollViewController.h; sourceTree = "<group>"; };
 		02C7F7C317A753470059E10D /* ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollViewController.m; path = ../ScrollViewController.m; sourceTree = "<group>"; };
 		02C7F7C417A753480059E10D /* ScrollViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScrollViewController.xib; path = ../ScrollViewController.xib; sourceTree = "<group>"; };
-		6B971AF517AA333000EE148A /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = SOURCE_ROOT; };
-		6B971AF617AA333000EE148A /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = SOURCE_ROOT; };
 		6BA2715B179A56CB0035AA75 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6BA2715D179A56D80035AA75 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6BA2715F179A56E40035AA75 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -445,7 +442,7 @@
 		A77E93A9179FEA240026E388 /* MBSpinningCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBSpinningCircle.h; sourceTree = "<group>"; };
 		A77E93AA179FEA240026E388 /* MBSpinningCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBSpinningCircle.m; sourceTree = "<group>"; };
 		A788018617AA37E5009B183A /* loginJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loginJson.json; sourceTree = "<group>"; };
-		A788018917AA3818009B183A /* 没那么简单.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "没那么简单.mp3"; sourceTree = "<group>"; };
+		A788018917AA3818009B183A /* 没那么简单.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "没那么简单.mp3"; path = "../../没那么简单.mp3"; sourceTree = "<group>"; };
 		A799A86F17A6302B0085B245 /* MDAudioPlayerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAudioPlayerTableViewCell.h; sourceTree = "<group>"; };
 		A799A87017A6302B0085B245 /* MDAudioPlayerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAudioPlayerTableViewCell.m; sourceTree = "<group>"; };
 		A7A63A50179D4E1A00B04F46 /* MDAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDAudioFile.h; path = myquick/MDAudioFile.h; sourceTree = "<group>"; };
@@ -500,6 +497,7 @@
 		027B1D64179E86EF00AB5EBF /* Downloadimage */ = {
 			isa = PBXGroup;
 			children = (
+				A788018917AA3818009B183A /* 没那么简单.mp3 */,
 				02C7F7BD17A753250059E10D /* DownLoad.png */,
 				02B52D2217A0FCDA00A710D3 /* duihao2.png */,
 				02AABBF1179FB14600F52E1A /* Pause3.png */,
@@ -547,7 +545,6 @@
 		6BAC0EC21796330400090A21 = {
 			isa = PBXGroup;
 			children = (
-				A788018917AA3818009B183A /* 没那么简单.mp3 */,
 				6BE0A37D179E66A7005B749C /* DownAmdLoadWithMusic */,
 				6BE0A18A179E3793005B749C /* AudioPlayerForMusic */,
 				A7A63A63179D501E00B04F46 /* Images */,
@@ -593,8 +590,6 @@
 		6BAC0ED71796330500090A21 /* myquick */ = {
 			isa = PBXGroup;
 			children = (
-				6B971AF517AA333000EE148A /* SecondViewController.h */,
-				6B971AF617AA333000EE148A /* SecondViewController.m */,
 				72BFFD84179D4AAE00764B07 /* AViewController.h */,
 				72BFFD85179D4AAE00764B07 /* AViewController.m */,
 				72A2CBAF17A0F580004AFF51 /* HsTable.h */,
@@ -1163,7 +1158,6 @@
 				A799A87117A6302B0085B245 /* MDAudioPlayerTableViewCell.m in Sources */,
 				02C7F7C517A753480059E10D /* DAAutoTextView.m in Sources */,
 				02C7F7C617A753480059E10D /* ScrollViewController.m in Sources */,
-				6B971AF717AA333000EE148A /* SecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

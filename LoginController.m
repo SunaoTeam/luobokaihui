@@ -11,7 +11,6 @@
 #import "JSONKit.h"
 #import "ViewController.h"
 #import "ASIHTTPRequest.h"
-#import "Login.h"
 #import "DemoViewController.h"
 #import "AudioView.h"
 #import "Memo.h"
@@ -20,7 +19,7 @@
 
 @interface LoginController ()
 - (void)onLogin:(QButtonElement *)buttonElement;
-//- (void)onAbout;
+
 @property (nonatomic, retain) NSMutableArray *fileArray;
 
 @end
@@ -40,11 +39,6 @@
     ((QEntryElement *)[self.root elementWithKey:@"login"]).delegate = self;
 }
 
-//- (void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"About" style:UIBarButtonItemStylePlain target:self action:@selector(onAbout)];
-//}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -60,57 +54,7 @@
     }
 }
 
-//+ (QRootElement *)createDetailsForm {
-//    QRootElement *details = [[QRootElement alloc] init];
-//    details.title = @"Details";
-//    details.controllerName = @"AboutController";
-//    details.grouped = YES;
-//    QSection *section = [[QSection alloc] initWithTitle:@"Information"];
-//    [section addElement:[[QTextElement alloc] initWithText:@"Here's some more info about this app."]];
-//    [details addSection:section];
-//    return details;
-//}
 
-//+ (QRootElement *)createLoginForm {
-//    QRootElement *root = [[QRootElement alloc] init];
-//    root.controllerName = @"LoginController";
-//    root.grouped = YES;
-//    root.title = @"Login";
-//
-//    QSection *main = [[QSection alloc] init];
-//    main.headerImage = @"logo";
-//
-//    QEntryElement *login = [[QEntryElement alloc] init];
-//    login.title = @"Username";
-//    login.key = @"login";
-//    login.hiddenToolbar = YES;
-//    login.placeholder = @"johndoe@me.com";
-//    [main addElement:login];
-//
-//    QEntryElement *password = [[QEntryElement alloc] init];
-//    password.title = @"Password";
-//    password.key = @"password";
-//    password.secureTextEntry = YES;
-//    password.hiddenToolbar = YES;
-//    password.placeholder = @"your password";
-//    [main addElement:password];
-//
-//    [root addSection:main];
-//
-//    QSection *btSection = [[QSection alloc] init];
-//    QButtonElement *btLogin = [[QButtonElement alloc] init];
-//    btLogin.title = @"Login";
-//    btLogin.controllerAction = @"onLogin:";
-//    [btSection addElement:btLogin];
-//
-//    [root addSection:btSection];
-//
-//    btSection.footerImage = @"footer";
-//
-//    return root;
-//}
-
-//这里是我自己添加的方法
 - (void)loginCompleted:(LoginInfo *)info {
     [self loading:NO];
     NSLog(@"%@,%@",info.login,info.password);
@@ -126,8 +70,8 @@
         [alert show];
     }else{
         
-//        dispatch_queue_t myQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//        dispatch_queue_t mainQueue=dispatch_get_main_queue();
+        dispatch_queue_t myQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_queue_t mainQueue=dispatch_get_main_queue();
         
         //内网测试数据，为了保证程序的通用性，下面用假数据代替
         //        dispatch_async(myQueue, ^{
@@ -178,63 +122,68 @@
         //
         //        });
         
-        
-        NSString *yonghuxinxi=@"{\"mahailong\":\"sunao\",\"majian\":\"sunao\",\"zhangjian\":\"sunao\",\"zhangwei\":\"sunao\",\"liuqingxuan\":\"sunao\"}";
-        NSData *data=[yonghuxinxi dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *dic=[data objectFromJSONData];
-        
-        NSString *strPass=[dic objectForKey:info.login];
-        NSLog(@"%@",strPass);
-        NSLog(@"%@",dic);
-        
-        if (strPass==nil||[strPass isEqualToString:@""]) {
-            UIAlertView *WarnAlertb=[[UIAlertView alloc] initWithTitle:@"Warn" message:@"用户名不存在" delegate:self cancelButtonTitle:@"YES!" otherButtonTitles:nil, nil];
-            [WarnAlertb show];
-            MCRelease(WarnAlertb);
-        }else{
-            if([strPass  isEqualToString:info.password]){
-                
-                //            QRootElement *root=[Login createMainFrom];
-                //            ViewController *view=[[ViewController alloc] initWithRoot:root];
-                
-                NSMutableArray *songs = [[NSMutableArray alloc] init];
-                Memo *mymemo=[[Memo alloc]init];
-                
-                self.fileArray = [[NSMutableArray alloc]initWithArray:[mymemo loadOldFile]];
-                NSLog(@"%@",self.fileArray);
-                
-                [songs removeAllObjects];
-                for (NSString *song in self.fileArray)
-                {
-                    NSString *soundFilePath=[mymemo.filePath stringByAppendingPathComponent:song];
-                    //初始化音频类 并且添加播放文件,把音频文件转换成url格式
-                    MDAudioFile *audioFile = [[MDAudioFile alloc] initWithPath:[NSURL fileURLWithPath:soundFilePath]];
-                    
-                    [songs addObject:audioFile];
-                    MCRelease(audioFile);
+        dispatch_async(myQueue, ^{
+            __block  NSString *strPass=nil;
+            dispatch_sync(myQueue, ^{
+                NSString *yonghuxinxi=@"{\"mahailong\":\"sunao\",\"majian\":\"sunao\",\"zhangjian\":\"sunao\",\"zhangwei\":\"sunao\",\"liuqingxuan\":\"sunao\"}";
+                NSData *data=[yonghuxinxi dataUsingEncoding:NSUTF8StringEncoding];
+                NSDictionary *dic=[data objectFromJSONData];
+               strPass=[dic objectForKey:info.login];
+            });
+            dispatch_sync(mainQueue, ^{
+                if (strPass==nil||[strPass isEqualToString:@""]) {
+                    UIAlertView *WarnAlertb=[[UIAlertView alloc] initWithTitle:@"Warn" message:@"用户名不存在" delegate:self cancelButtonTitle:@"YES!" otherButtonTitles:nil, nil];
+                    [WarnAlertb show];
+                    MCRelease(WarnAlertb);
+                }else{
+                    if([strPass  isEqualToString:info.password]){
+                        
+                        //            QRootElement *root=[Login createMainFrom];
+                        //            ViewController *view=[[ViewController alloc] initWithRoot:root];
+                        
+                        NSMutableArray *songs = [[NSMutableArray alloc] init];
+                        Memo *mymemo=[[Memo alloc]init];
+                        
+                        self.fileArray = [[NSMutableArray alloc]initWithArray:[mymemo loadOldFile]];
+                        NSLog(@"%@",self.fileArray);
+                        
+                        [songs removeAllObjects];
+                        for (NSString *song in self.fileArray)
+                        {
+                            NSString *soundFilePath=[mymemo.filePath stringByAppendingPathComponent:song];
+                            //初始化音频类 并且添加播放文件,把音频文件转换成url格式
+                            MDAudioFile *audioFile = [[MDAudioFile alloc] initWithPath:[NSURL fileURLWithPath:soundFilePath]];
+                            
+                            [songs addObject:audioFile];
+                            MCRelease(audioFile);
+                        }
+                        
+                        NSData *data=[NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"没那么简单" ofType:@"mp3"]];
+                        [mymemo addMusicFile:data];
+                        
+                        
+                        MDAudioPlayerController *mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
+                        
+                        AudioView *view=[[AudioView alloc] init];
+                        
+                        [self.navigationController pushViewController:mdaudio animated:YES];
+                        MCRelease(view);
+                        MCRelease(songs);
+                        MCRelease(mymemo);
+                        MCRelease(mdaudio);
+                    }else {
+                        UIAlertView *WarnAlertb=[[UIAlertView alloc] initWithTitle:@"Warn" message:@"密码错误" delegate:self cancelButtonTitle:@"YES!" otherButtonTitles:nil, nil];
+                        [WarnAlertb show];
+                        MCRelease(WarnAlertb);
+                    }
                 }
-                
-                NSData *data=[NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"没那么简单" ofType:@"mp3"]];
-                [mymemo addMusicFile:data];
-                
-                
-                //                [songs addObject:[[MDAudioFile alloc] initWithPath:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"没那么简单" ofType:@"mp3"]]]];
-                
-                MDAudioPlayerController *mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
-                
-                AudioView *view=[[AudioView alloc] init];
-                
-                [self.navigationController pushViewController:mdaudio animated:YES];
-                MCRelease(view);
-                MCRelease(songs);
-                MCRelease(mymemo);
-                MCRelease(mdaudio);
-            }else {
-                UIAlertView *WarnAlertb=[[UIAlertView alloc] initWithTitle:@"Warn" message:@"密码错误" delegate:self cancelButtonTitle:@"YES!" otherButtonTitles:nil, nil];
-                [WarnAlertb show];
-                MCRelease(WarnAlertb);
-            }
-        }
+            });
+        });
+        
+
+
+        
+
     }
 }
 
@@ -249,15 +198,14 @@
 //
 //}
 
-//这里是我自己添加的方法
 - (void)onLogin:(QButtonElement *)buttonElement {
+    
     [self loading:YES];
     LoginInfo *info = [[LoginInfo alloc] init];
     
     [self.root fetchValueIntoObject:info];
     
     [self performSelector:@selector(loginCompleted:) withObject:info afterDelay:2];
-    NSLog(@"test the commit");
 }
 
 

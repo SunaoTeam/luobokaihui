@@ -8,15 +8,12 @@
 
 #import "RootViewController.h"
 #import "DemoViewController.h"
-#import "SecondViewController.h"
-#import "Login.h"
 #import "ViewController.h"
 #import "AppDelegate.h"
 #import "AViewController.h"
 #import "AudioView.h"
 #import "DownloadViewController.h"
 #import "BaiduMusicViewController.h"
-#import <dispatch/dispatch.h>
 #import "MDAudioPlayerController.h"
 #import "MDAudioFile.h"
 #import "Memo.h"
@@ -56,119 +53,67 @@
     
     if (!_sideMenu) {
         
-        dispatch_queue_t myQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_queue_t mainQueue=dispatch_get_main_queue();
-        NSMutableArray *myArray=[[NSMutableArray alloc] init];
         
-        dispatch_async(myQueue, ^{
-            __block  MDAudioPlayerController *viewController = nil;
-            __block  RESideMenuItem *homeItem=nil;
-            dispatch_sync(myQueue, ^{
-                homeItem = [[RESideMenuItem alloc] initWithTitle:@"音乐播放器" action:^(RESideMenu *menu, RESideMenuItem *item) {
-                    
-                    viewController = [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
-                    viewController.title = item.title;
-                    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-                    
-                    [navigationController.navigationBar setBarStyle:UIBarStyleBlack];
-                    
-                    [menu setRootViewController:navigationController];
-                    
-                }];
-            });
-            dispatch_sync(mainQueue, ^{
-                [myArray addObject:homeItem];
-            });
-        });
+        RESideMenuItem *homeItem = [[RESideMenuItem alloc] initWithTitle:@"音乐播放器" action:^(RESideMenu *menu, RESideMenuItem *item) {
+            
+            MDAudioPlayerController *viewController = [[MDAudioPlayerController alloc] init];
+            viewController = [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
+            viewController.title = item.title;
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+            
+            [navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+            
+            [menu setRootViewController:navigationController];
+            
+        }];
         
-        dispatch_async(myQueue, ^{
-            __block  BaiduMusicViewController *secondViewController = nil;
-            __block  RESideMenuItem *exploreItem=nil;
-            dispatch_sync(myQueue, ^{
-                secondViewController = [[BaiduMusicViewController alloc] init];
-                exploreItem = [[RESideMenuItem alloc] initWithTitle:@"音乐下载" action:^(RESideMenu *menu, RESideMenuItem *item) {
-                    secondViewController.title = item.title;
-                    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:secondViewController];
-                    [navigationController.navigationBar setBarStyle:UIBarStyleBlack];
-
-                    [menu setRootViewController:navigationController];
-                }];
-            });
-            dispatch_sync(mainQueue, ^{
-                [myArray addObject:exploreItem];
-            });
-        });
+        RESideMenuItem *exploreItem=[[RESideMenuItem alloc] initWithTitle:@"音乐下载" action:^(RESideMenu *menu, RESideMenuItem *item) {
+            BaiduMusicViewController *secondViewController = [[BaiduMusicViewController alloc] init];
+            secondViewController.title = item.title;
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:secondViewController];
+            [navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+            
+            [menu setRootViewController:navigationController];
+        }];
         
-        dispatch_async(myQueue, ^{
-            __block  DownloadViewController *secondViewController = nil;
-            __block  RESideMenuItem *exploreItem=nil;
-            dispatch_sync(myQueue, ^{
-                secondViewController = [[DownloadViewController alloc] init];
-                exploreItem = [[RESideMenuItem alloc] initWithTitle:@"正在下载的音乐" action:^(RESideMenu *menu, RESideMenuItem *item) {
-                    secondViewController.title = item.title;
-                    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:secondViewController];
-                    
-                    [navigationController.navigationBar setBarStyle:UIBarStyleBlack];
-
-                    [menu setRootViewController:navigationController];
-                }];
-            });
-            dispatch_sync(mainQueue, ^{
-                [myArray addObject:exploreItem];
-            });
-        });
+        RESideMenuItem *exploreItemb=[[RESideMenuItem alloc] initWithTitle:@"正在下载的音乐" action:^(RESideMenu *menu, RESideMenuItem *item) {
+            DownloadViewController *secondViewController = [[DownloadViewController alloc] init];
+            secondViewController.title = item.title;
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:secondViewController];
+            
+            [navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+            
+            [menu setRootViewController:navigationController];
+        }];
         
-        dispatch_async(myQueue, ^{
-            __block  AViewController *secondViewController = nil;
-            __block  RESideMenuItem *activityItem=nil;
-            dispatch_sync(myQueue, ^{
-                secondViewController = [[AViewController alloc] init];
-                activityItem = [[RESideMenuItem alloc] initWithTitle:@"录音" action:^(RESideMenu *menu, RESideMenuItem *item) {
-                    secondViewController.title = item.title;
-                    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:secondViewController];
-                    
-                    [navigationController.navigationBar setBarStyle:UIBarStyleBlack];
-
-                    [menu setRootViewController:navigationController];
-                }];
-            });
-            dispatch_sync(mainQueue, ^{
-                [myArray addObject:activityItem];
-            });
-        });
+        RESideMenuItem *activityItem=[[RESideMenuItem alloc] initWithTitle:@"录音" action:^(RESideMenu *menu, RESideMenuItem *item) {
+            AViewController *secondViewController = [[AViewController alloc] init];
+            secondViewController.title = item.title;
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:secondViewController];
+            [navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+            
+            [menu setRootViewController:navigationController];
+        }];
         
-        dispatch_async(myQueue, ^{
-            __block  ScrollViewController *secondViewController = nil;
-            __block  RESideMenuItem *profileItem=nil;
-            dispatch_sync(myQueue, ^{
-                secondViewController = [[ScrollViewController alloc] init];
-                profileItem = [[RESideMenuItem alloc] initWithTitle:@"关于我们" action:^(RESideMenu *menu, RESideMenuItem *item) {
-                    secondViewController.title = item.title;
-                    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:secondViewController];
-                    
-                    [navigationController.navigationBar setBarStyle:UIBarStyleBlack];
-
-                    [menu setRootViewController:navigationController];
-                }];
-            });
-            dispatch_sync(mainQueue, ^{
-                [myArray addObject:profileItem];
-            });
-        });
         
-        dispatch_async(myQueue, ^{
-            __block  SecondViewController *secondViewController = nil;
-            __block  RESideMenuItem *logOutItem=nil;
-            dispatch_sync(myQueue, ^{
-                secondViewController = [[SecondViewController alloc] init];
-                logOutItem = [[RESideMenuItem alloc] initWithTitle:@"注销" action:^(RESideMenu *menu, RESideMenuItem *item) {
-                    UIActionSheet *alertView = [[UIActionSheet alloc] initWithTitle:@"提示" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                    [alertView showInView:self.view];                }];
-            });
-            dispatch_sync(mainQueue, ^{
-                [myArray addObject:logOutItem];
-            });
-        });
+        RESideMenuItem *profileItem=[[RESideMenuItem alloc] initWithTitle:@"关于我们" action:^(RESideMenu *menu, RESideMenuItem *item) {
+            ScrollViewController *secondViewController = [[ScrollViewController alloc] init];
+            secondViewController.title = item.title;
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:secondViewController];
+            
+            [navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+            
+            [menu setRootViewController:navigationController];
+        }];
+        
+        
+        RESideMenuItem *logOutItem=[[RESideMenuItem alloc] initWithTitle:@"注销" action:^(RESideMenu *menu, RESideMenuItem *item) {
+            UIActionSheet *alertView = [[UIActionSheet alloc] initWithTitle:@"提示" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alertView showInView:self.view];
+        }];
+        
+        
+        NSArray *myArray=[[NSArray alloc] initWithObjects:homeItem,exploreItem,exploreItemb,activityItem,profileItem,logOutItem, nil];
         
         _sideMenu = [[RESideMenu alloc] initWithItems:myArray];
         //        _sideMenu.verticalOffset = IS_WIDESCREEN ? 110 : 76;
