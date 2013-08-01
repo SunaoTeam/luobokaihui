@@ -45,7 +45,7 @@
     currentTime.shadowColor = [UIColor blackColor];
     currentTime.backgroundColor = [UIColor clearColor];
     currentTime.textColor = [UIColor whiteColor];
-    currentTime.textAlignment = UITextAlignmentRight;
+    currentTime.textAlignment = NSTextAlignmentRight;
     
     allTime=[[UILabel alloc]initWithFrame:CGRectMake(260, 0, 40, 20)];
     allTime.font = [UIFont boldSystemFontOfSize:14];
@@ -53,7 +53,7 @@
     allTime.shadowColor = [UIColor blackColor];
     allTime.backgroundColor = [UIColor clearColor];
     allTime.textColor = [UIColor whiteColor];
-    allTime.textAlignment = UITextAlignmentRight;
+    allTime.textAlignment = NSTextAlignmentRight;
     
     view=[[UIView alloc]initWithFrame:CGRectMake(0, 340, 320, 120)];
     view.backgroundColor=[UIColor blackColor];

@@ -68,6 +68,7 @@ static MBAlertView *currentAlert;
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
 }
 
 -(id)init

@@ -84,8 +84,6 @@
         [startButton setBackgroundImage:[UIImage imageNamed:@"002.png"] forState:UIControlStateNormal];
         self.navigationItem.title=[NSString stringWithFormat:@"录音 %d%d:%d%d",a,b,c,d];
         
-        NSFileManager *fm=[NSFileManager defaultManager];
-        NSString *arr=[[fm subpathsAtPath:NSTemporaryDirectory()]lastObject];
         [recorder stop];
         [tProcess invalidate];
     }else{

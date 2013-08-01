@@ -90,7 +90,7 @@
         CGSize maximumLabelSize = CGSizeMake(maxWidth,maxHeight);
         CGSize expectedLabelSize = [section.footer sizeWithFont:[UIFont systemFontOfSize:[UIFont labelFontSize]]
                                               constrainedToSize:maximumLabelSize
-                                                  lineBreakMode:UILineBreakModeWordWrap];
+                                                  lineBreakMode:NSLineBreakByWordWrapping];
 
         stringFooterHeight = expectedLabelSize.height+5;
     }

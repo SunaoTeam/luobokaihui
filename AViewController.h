@@ -27,5 +27,4 @@
     NSDateFormatter *dateformatter;
 }
 @property(nonatomic,retain)NSString *str;
-- (void)textFieldDidEndEditing:(UITextField *)textField;
 @end

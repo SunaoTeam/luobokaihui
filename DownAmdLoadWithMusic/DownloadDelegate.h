@@ -11,7 +11,7 @@
 
 @protocol DownloadDelegate <NSObject>
 
--(void)startDownload:(ASIHTTPRequest *)request;
+//-(void)startDownload:(ASIHTTPRequest *)request;
 -(void)updateCellProgress:(ASIHTTPRequest *)request;
 -(void)finishedDownload:(ASIHTTPRequest *)request;
 

@@ -43,7 +43,7 @@
     }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-        cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+        cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
         cell.detailTextLabel.numberOfLines = 0;
 
     cell.textLabel.text = self.title;
@@ -69,7 +69,7 @@
         return [super getRowHeightForTableView:tableView];
     }
     CGSize constraint = CGSizeMake(tableView.frame.size.width, 20000);
-    CGSize  size= [_text sizeWithFont:_font constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    CGSize  size= [_text sizeWithFont:_font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
 	CGFloat predictedHeight = size.height + 20.0f;
     if (self.title!=nil)
         predictedHeight+=30;

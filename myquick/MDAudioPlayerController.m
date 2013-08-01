@@ -213,9 +213,9 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
     //与原文本偏移量
 	titleLabel.shadowOffset = CGSizeMake(0, -1);
 	//水平显示位置居中
-    titleLabel.textAlignment = UITextAlignmentCenter;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
     //折行方式
-	titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
+	titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
 	[self.view addSubview:titleLabel];
     
 	self.artistLabel = [[UILabel alloc] initWithFrame:CGRectMake(-55, -17, 120, 12)];
@@ -225,8 +225,8 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
 	artistLabel.textColor = [UIColor lightGrayColor];
 	artistLabel.shadowColor = [UIColor blackColor];
 	artistLabel.shadowOffset = CGSizeMake(0, -1);
-	artistLabel.textAlignment = UITextAlignmentCenter;
-	artistLabel.lineBreakMode = UILineBreakModeTailTruncation;
+	artistLabel.textAlignment = NSTextAlignmentCenter;
+	artistLabel.lineBreakMode = NSLineBreakByTruncatingTail;
 	[self.view addSubview:artistLabel];
 	
 	self.albumLabel = [[UILabel alloc] initWithFrame:CGRectMake(-55, 7, 120, 12)];
@@ -236,8 +236,8 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
 	albumLabel.textColor = [UIColor lightGrayColor];
 	albumLabel.shadowColor = [UIColor blackColor];
 	albumLabel.shadowOffset = CGSizeMake(0, -1);
-	albumLabel.textAlignment = UITextAlignmentCenter;
-	albumLabel.lineBreakMode = UILineBreakModeTailTruncation;
+	albumLabel.textAlignment = NSTextAlignmentCenter;
+	albumLabel.lineBreakMode = NSLineBreakByTruncatingTail;
 	[self.view addSubview:albumLabel];
     
     UIView *titleLabels =[[UIView alloc] init];
@@ -362,7 +362,7 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
 
 - (void)dismissAudioPlayer
 {
-	CGContextRef *context=UIGraphicsGetCurrentContext();
+	CGContextRef context=UIGraphicsGetCurrentContext();
     [UIView beginAnimations:@"curl" context:context];
     [UIView setAnimationDuration:1.5];
     [UIView setAnimationTransition:UIViewContentModeCenter forView:self.view cache:YES];
@@ -441,7 +441,7 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
 		indexLabel.shadowColor = [UIColor blackColor];
 		indexLabel.backgroundColor = [UIColor clearColor];
 		indexLabel.textColor = [UIColor whiteColor];
-		indexLabel.textAlignment = UITextAlignmentCenter;
+		indexLabel.textAlignment = NSTextAlignmentCenter;
 		[overlayView addSubview:indexLabel];
 		
         //总时间
@@ -460,7 +460,7 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
 		currentTime.shadowColor = [UIColor blackColor];
 		currentTime.backgroundColor = [UIColor clearColor];
 		currentTime.textColor = [UIColor whiteColor];
-		currentTime.textAlignment = UITextAlignmentRight;
+		currentTime.textAlignment = NSTextAlignmentRight;
 		[overlayView addSubview:currentTime];
 		
 		duration.adjustsFontSizeToFitWidth = YES;
@@ -774,7 +774,7 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
     MDAudioPlayerTableViewCell *cell = (MDAudioPlayerTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil)
 	{
-		cell = [[[MDAudioPlayerTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[[MDAudioPlayerTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:CellIdentifier] autorelease];
 	}
 	
 	cell.title = [[soundFiles objectAtIndex:indexPath.row] title];

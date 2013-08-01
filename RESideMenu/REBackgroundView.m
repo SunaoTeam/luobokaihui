@@ -79,7 +79,7 @@
                                (id)gradientColor3.CGColor,
                                (id)fillColor.CGColor, nil];
     CGFloat gradientLocations[] = {0, 0.16, 0.29, 0.58, 0.8, 1};
-    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)gradientColors, gradientLocations);
+    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, ( CFArrayRef)gradientColors, gradientLocations);
     
     //// Rectangle Drawing
     UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, rect.size.width, rect.size.height)];

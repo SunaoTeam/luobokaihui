@@ -110,7 +110,7 @@
     
     
     
-    CGContextRef *context=UIGraphicsGetCurrentContext();
+    CGContextRef context=UIGraphicsGetCurrentContext();
     [UIView beginAnimations:@"curl" context:context];
     [UIView setAnimationDuration:0.5];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:YES];
@@ -132,7 +132,7 @@
     //添加控制器
 	MDAudioPlayerController *audioPlayer = [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:indexPath.row];
     
-	[self.navigationController presentModalViewController:audioPlayer animated:YES];
+//	[self.navigationController presentModalViewController:audioPlayer animated:YES];
 	[audioPlayer release];
 }
 

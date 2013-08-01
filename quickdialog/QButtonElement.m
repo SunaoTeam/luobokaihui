@@ -31,7 +31,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     cell.textLabel.text = _title;
-    cell.textLabel.textAlignment = UITextAlignmentCenter;
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.textLabel.textColor = [UIColor colorWithRed:50.0f/255.0f green:79.0f/255.0f blue:133.0f/255.0f alpha:1];
     return cell;
 }

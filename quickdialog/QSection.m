@@ -76,6 +76,7 @@
     for (QElement * element in self.elements) {
         element.parentSection = nil;
     }
+    [super dealloc];
 }
 
 - (void)bindToObject:(id)data {

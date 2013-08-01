@@ -20,7 +20,7 @@
 
 @interface LoginController ()
 - (void)onLogin:(QButtonElement *)buttonElement;
-- (void)onAbout;
+//- (void)onAbout;
 @property (nonatomic, retain) NSMutableArray *fileArray;
 
 @end
@@ -201,7 +201,7 @@
                     MCRelease(audioFile);
                 }
                 
-                MDAudioPlayerController *mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:nil];
+                MDAudioPlayerController *mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
                 
                 AudioView *view=[[AudioView alloc] init];
                 

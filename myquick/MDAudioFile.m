@@ -48,7 +48,7 @@
 	
     rawID3Tag = (char *)malloc(id3DataSize);
     if (rawID3Tag == NULL)
-        NSLog(@"could not allocate %d bytes of memory for ID3 tag", id3DataSize);
+        NSLog(@"could not allocate %lu bytes of memory for ID3 tag", id3DataSize);
     
     error = AudioFileGetProperty(fileID, kAudioFilePropertyID3Tag, &id3DataSize, rawID3Tag);
     if( error != noErr )
