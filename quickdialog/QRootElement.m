@@ -72,6 +72,7 @@
 }
 
 -(void)dealloc {
+    [super dealloc];
     for (QSection * section in self.sections) {
         section.rootElement = nil;
     }

@@ -106,7 +106,8 @@
     if (self.navigationController!=nil){
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        [self dismissModalViewControllerAnimated:YES];
+//        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
@@ -114,7 +115,8 @@
     if (self.navigationController != nil ){
         [self.navigationController pushViewController:newController animated:YES];
     } else {
-        [self presentModalViewController:newController animated:YES];
+//        [self presentModalViewController:newController animated:YES];
+        [self presentViewController:newController animated:YES completion:nil];
     }
 }
 
