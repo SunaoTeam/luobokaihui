@@ -261,7 +261,7 @@ void interruptionListenerCallback (void *userData, UInt32 interruptionState)
     if ([arrays count]==0) {
         self.artworkView = [[UIButton alloc] initWithFrame:CGRectMake(0, -60, 320, 380)];
         [artworkView setImage:[UIImage imageNamed:@"zanwu1.jpg"] forState:UIControlStateNormal];
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"没有歌曲情下载" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"音乐库中没有歌曲，请下载" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
         [alert show];
         [alert release];
     }else{

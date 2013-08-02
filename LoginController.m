@@ -73,62 +73,106 @@
         dispatch_queue_t myQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_queue_t mainQueue=dispatch_get_main_queue();
         
-        //内网测试数据，为了保证程序的通用性，下面用假数据代替
-        //        dispatch_async(myQueue, ^{
-        //            __block NSURL *pasUrl=nil;
-        //            __block ASIHTTPRequest *pasRequest=nil;
-        //            dispatch_sync(myQueue, ^{
-        //                pasUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://172.16.2.16:8023/MeetingSystemss/LoginMeeting?username=%@&password=%@",info.login,info.password]];
-        //                pasRequest = [ASIHTTPRequest requestWithURL:pasUrl];
-        //                [pasRequest startSynchronous];
-        //            });
-        //            dispatch_sync(mainQueue, ^{
-        //                NSError *loginError = [pasRequest error];
-        //                if(!loginError)
-        //                {
-        //                    NSData *pasResponse = pasRequest.responseData;
-        //                    NSDictionary *pasDic = [NSJSONSerialization JSONObjectWithData:pasResponse options:kNilOptions error:nil];
-        //                    NSString *isYes = [pasDic objectForKey:@"flag"];
-        //                    if ([isYes isEqualToString:@"YES"])
-        //                    {
-        //                        NSURL *conferenceUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://172.16.2.16:8023/MeetingSystemss/GetMeetingTitle?username=%@",info.login]];
-        //                        ASIHTTPRequest *conferenceRequest = [ASIHTTPRequest requestWithURL:conferenceUrl];
-        //                        [conferenceRequest startSynchronous];
-        //                        NSError *conferenceError = [conferenceRequest error];
-        //                        if (!conferenceError)
-        //                        {
-        //                            NSData *conferenceResponse = conferenceRequest.responseData;
-        //                            NSDictionary *conferenceDic = [NSJSONSerialization JSONObjectWithData:conferenceResponse options:kNilOptions error:nil];
-        //                            NSArray *startArr = [conferenceDic objectForKey:@"start"];
-        //                            NSArray *endArr = [conferenceDic objectForKey:@"end"];
-        //                            NSMutableArray *startName = [[NSMutableArray alloc] initWithCapacity:0];
-        //                            NSMutableArray *endName = [[NSMutableArray alloc] initWithCapacity:0];
-        //                            for (int i = 0; i < startArr.count; i++) {
-        //                                [startName addObject:[[startArr objectAtIndex:i] objectForKey:@"Conference_title"]];
-        //                            }
-        //                            for (int i = 0; i < endArr.count; i++) {
-        //                                [endName addObject:[[endArr objectAtIndex:i] objectForKey:@"Conference_title"]];
-        //                            }
-        //                            ViewController *regist = [[ViewController alloc] init];
-        //                            [self.navigationController pushViewController:regist animated:YES];
-        //                        }
-        //                        else
-        //                        {
-        //                            NSLog(@"%@",conferenceError);
-        //                        }
-        //                    }
-        //                }
-        //            });
-        //
-        //        });
+//内网测试数据，为了保证程序的通用性，下面用假数据代替
+//    dispatch_async(myQueue, ^{
+//            __block NSURL *pasUrl=nil;
+//            __block ASIHTTPRequest *pasRequest=nil;
+//            __block NSError *loginError=nil;
+//            __block NSData *pasResponse=nil;
+//        dispatch_sync(myQueue, ^{
+//            pasUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://172.16.2.16:8023/MeetingSystemss/LoginMeeting?username=%@&password=%@",info.login,info.password]];
+//            pasRequest = [ASIHTTPRequest requestWithURL:pasUrl];
+//            [pasRequest startSynchronous];
+//            loginError = [pasRequest error];
+//            if(!loginError)
+//            {
+//                pasResponse = pasRequest.responseData;
+//            }else
+//            {
+//                NSLog(@"Error");
+//            }
+//    });
+//    dispatch_sync(mainQueue, ^{
+//        if(!loginError)
+//            {
+//                  NSDictionary *pasDic = [pasResponse objectFromJSONData];
+//                 NSString *isYes = [pasDic objectForKey:@"flag"];
+//                    if ([isYes isEqualToString:@"YES"])
+//                    {
+//                        dispatch_async(myQueue, ^{
+//                            __block NSError *conferenceError=nil;
+//                            __block ASIHTTPRequest *conferenceRequest=nil;
+//                            dispatch_sync(myQueue, ^{
+//                                NSURL *conferenceUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://172.16.2.16:8023/MeetingSystemss/GetMeetingTitle?username=%@",info.login]];
+//                                conferenceRequest = [ASIHTTPRequest requestWithURL:conferenceUrl];
+//                                [conferenceRequest startSynchronous];
+//                                conferenceError = [conferenceRequest error];
+//                            });
+//                            dispatch_sync(mainQueue, ^{
+//                                if (!conferenceError)
+//                                {
+//                                    NSData *conferenceResponse = conferenceRequest.responseData;
+//                                    NSDictionary *conferenceDic = [NSJSONSerialization JSONObjectWithData:conferenceResponse options:kNilOptions error:nil];
+//                                    NSArray *startArr = [conferenceDic objectForKey:@"start"];
+//                                    NSArray *endArr = [conferenceDic objectForKey:@"end"];
+//                                    NSMutableArray *startName = [[NSMutableArray alloc] initWithCapacity:0];
+//                                    NSMutableArray *endName = [[NSMutableArray alloc] initWithCapacity:0];
+//                                    for (int i = 0; i < startArr.count; i++) {
+//                                        [startName addObject:[[startArr objectAtIndex:i] objectForKey:@"Conference_title"]];
+//                                    }
+//                                    for (int i = 0; i < endArr.count; i++) {
+//                                        [endName addObject:[[endArr objectAtIndex:i] objectForKey:@"Conference_title"]];
+//                                    }
+//                                    
+//                                    NSMutableArray *songs = [[NSMutableArray alloc] init];
+//                                    Memo *mymemo=[[Memo alloc]init];
+//                                    
+//                                    self.fileArray = [[NSMutableArray alloc]initWithArray:[mymemo loadOldFile]];
+//                                    NSLog(@"my file is %@",self.fileArray);
+//                                    
+//                                    [songs removeAllObjects];
+//                                    for (NSString *song in self.fileArray)
+//                                    {
+//                                        NSString *soundFilePath=[mymemo.filePath stringByAppendingPathComponent:song];
+//                                        //初始化音频类 并且添加播放文件,把音频文件转换成url格式
+//                                        MDAudioFile *audioFile = [[MDAudioFile alloc] initWithPath:[NSURL fileURLWithPath:soundFilePath]];
+//                                        [songs addObject:audioFile];
+//                                        MCRelease(audioFile);
+//                                    }
+//
+//                                    
+//                                    MDAudioPlayerController *mdaudio=nil;
+//                                    if ([self.fileArray count]==0) {
+//                                        mdaudio=[[MDAudioPlayerController alloc] init];
+//                                    }else{
+//                                        mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
+//                                    }
+//                                    [self.navigationController pushViewController:mdaudio animated:YES];
+//                                }
+//                                else
+//                                {
+//                                    NSLog(@"%@",conferenceError);
+//                                }
+//                            });
+//                           
+//                        });
+//                    }
+//                }
+//            });
+//        
+//        });
         
+
+    
+    
+    
         dispatch_async(myQueue, ^{
             __block  NSString *strPass=nil;
             dispatch_sync(myQueue, ^{
                 NSString *yonghuxinxi=@"{\"mahailong\":\"sunao\",\"majian\":\"sunao\",\"zhangjian\":\"sunao\",\"zhangwei\":\"sunao\",\"liuqingxuan\":\"sunao\"}";
                 NSData *data=[yonghuxinxi dataUsingEncoding:NSUTF8StringEncoding];
                 NSDictionary *dic=[data objectFromJSONData];
-               strPass=[dic objectForKey:info.login];
+                strPass=[dic objectForKey:info.login];
             });
             dispatch_sync(mainQueue, ^{
                 if (strPass==nil||[strPass isEqualToString:@""]) {
