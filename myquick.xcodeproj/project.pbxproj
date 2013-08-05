@@ -23,6 +23,9 @@
 		6BA27162179A56EE0035AA75 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA27161179A56EE0035AA75 /* Security.framework */; };
 		6BA27164179A56FC0035AA75 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA27163179A56FC0035AA75 /* libz.1.2.5.dylib */; };
 		6BA27190179A83020035AA75 /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA2718F179A83010035AA75 /* Memo.m */; };
+		6BA7A5A317AF3F9100302BB9 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA7A5A217AF3F9100302BB9 /* GDataXMLNode.m */; };
+		6BA7A5A617AF3FA500302BB9 /* user.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6BA7A5A517AF3FA500302BB9 /* user.xml */; };
+		6BA7A5AC17AF445E00302BB9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA7A5AB17AF445E00302BB9 /* libxml2.dylib */; };
 		6BAA299C179CD59D00714C1B /* AccelerationAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAA298F179CD59D00714C1B /* AccelerationAnimation.m */; };
 		6BAA299D179CD59D00714C1B /* Evaluate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAA2991179CD59D00714C1B /* Evaluate.m */; };
 		6BAA299E179CD59D00714C1B /* REBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAA2993179CD59D00714C1B /* REBackgroundView.m */; };
@@ -199,6 +202,10 @@
 		6BA27163179A56FC0035AA75 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		6BA2718E179A83010035AA75 /* Memo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memo.h; sourceTree = "<group>"; };
 		6BA2718F179A83010035AA75 /* Memo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memo.m; sourceTree = "<group>"; };
+		6BA7A5A117AF3F9100302BB9 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		6BA7A5A217AF3F9100302BB9 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		6BA7A5A517AF3FA500302BB9 /* user.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = user.xml; sourceTree = "<group>"; };
+		6BA7A5AB17AF445E00302BB9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		6BAA298E179CD59D00714C1B /* AccelerationAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerationAnimation.h; sourceTree = "<group>"; };
 		6BAA298F179CD59D00714C1B /* AccelerationAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccelerationAnimation.m; sourceTree = "<group>"; };
 		6BAA2990179CD59D00714C1B /* Evaluate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Evaluate.h; sourceTree = "<group>"; };
@@ -475,6 +482,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BA7A5AC17AF445E00302BB9 /* libxml2.dylib in Frameworks */,
 				72BFFD92179D4C6700764B07 /* AudioToolbox.framework in Frameworks */,
 				72BFFD90179D4C5A00764B07 /* AVFoundation.framework in Frameworks */,
 				6BAA29AE179CD7CF00714C1B /* QuartzCore.framework in Frameworks */,
@@ -568,6 +576,7 @@
 		6BAC0ED01796330500090A21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6BA7A5AB17AF445E00302BB9 /* libxml2.dylib */,
 				A77E9393179FEA240026E388 /* MBAlertView */,
 				72BFFD91179D4C6700764B07 /* AudioToolbox.framework */,
 				72BFFD8F179D4C5A00764B07 /* AVFoundation.framework */,
@@ -737,6 +746,8 @@
 		6BC2D996179936B300E2D9CA /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
+				6BA7A5A117AF3F9100302BB9 /* GDataXMLNode.h */,
+				6BA7A5A217AF3F9100302BB9 /* GDataXMLNode.m */,
 				A788018617AA37E5009B183A /* loginJson.json */,
 				6BB7804817A12E9C001D22C3 /* LoginController.h */,
 				6BB7804917A12E9C001D22C3 /* LoginController.m */,
@@ -744,6 +755,7 @@
 				6BA2718F179A83010035AA75 /* Memo.m */,
 				6BC2D9841799130B00E2D9CA /* LoginInfo.h */,
 				6BC2D9851799130B00E2D9CA /* LoginInfo.m */,
+				6BA7A5A517AF3FA500302BB9 /* user.xml */,
 			);
 			name = LoginView;
 			sourceTree = "<group>";
@@ -1043,6 +1055,7 @@
 				02C7F7C717A753480059E10D /* ScrollViewController.xib in Resources */,
 				A788018717AA37E5009B183A /* loginJson.json in Resources */,
 				A788019D17AA6204009B183A /* zanwu1.jpg in Resources */,
+				6BA7A5A617AF3FA500302BB9 /* user.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1158,6 +1171,7 @@
 				A799A87117A6302B0085B245 /* MDAudioPlayerTableViewCell.m in Sources */,
 				02C7F7C517A753480059E10D /* DAAutoTextView.m in Sources */,
 				02C7F7C617A753480059E10D /* ScrollViewController.m in Sources */,
+				6BA7A5A317AF3F9100302BB9 /* GDataXMLNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1230,6 +1244,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myquick/myquick-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "myquick/myquick-Info.plist";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1246,6 +1261,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myquick/myquick-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "myquick/myquick-Info.plist";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";

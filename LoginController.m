@@ -16,6 +16,7 @@
 #import "Memo.h"
 #import "MDAudioFile.h"
 #import "MDAudioPlayerController.h"
+#import "GDataXMLNode.h"
 
 @interface LoginController ()
 - (void)onLogin:(QButtonElement *)buttonElement;
@@ -165,60 +166,145 @@
 
     
     
-    
+    //在这里我使用了两种解析的方式，一种是json，一种是xml，两种解析方式都通过了测试，具体使用那一种可以根据情况决定，这里主要是为了证明我掌握了这种解析的基本使用方法，具体的使用很复杂，需要时间来掌握。
         dispatch_async(myQueue, ^{
             __block  NSString *strPass=nil;
+            __block  NSArray *users=nil;
+            __block  BOOL userCheck=NO;
             dispatch_sync(myQueue, ^{
+                
+                //jsonKIt解析
                 NSString *yonghuxinxi=@"{\"mahailong\":\"sunao\",\"majian\":\"sunao\",\"zhangjian\":\"sunao\",\"zhangwei\":\"sunao\",\"liuqingxuan\":\"sunao\"}";
+                
                 NSData *data=[yonghuxinxi dataUsingEncoding:NSUTF8StringEncoding];
+                
                 NSDictionary *dic=[data objectFromJSONData];
+                
                 strPass=[dic objectForKey:info.login];
+                
+                //GDXML解析
+                NSString *filePath=[[NSBundle mainBundle] pathForResource:@"user" ofType:@"xml"];
+        
+                NSData *xmlData=[[NSData alloc] initWithContentsOfFile:filePath];
+                
+                GDataXMLDocument *doc=[[GDataXMLDocument alloc] initWithData:xmlData options:0 error:nil];
+                
+                GDataXMLElement *rootElement=[doc rootElement];
+                
+                users=[rootElement elementsForName:@"User"];
+                
             });
             dispatch_sync(mainQueue, ^{
-                if (strPass==nil||[strPass isEqualToString:@""]) {
+                
+                //这里是使用GDXML解析对应的跳转
+                for (GDataXMLElement *user in users) {
+                    GDataXMLElement *nameElement=[[user elementsForName:@"name"] objectAtIndex:0];
+                    NSString *name=[nameElement stringValue];
+                    
+                    if ([name isEqualToString:info.login])
+                    {
+                        userCheck=YES;
+                    }
+                    
+                }
+                
+                if (userCheck) {
+                    for (GDataXMLElement *user in users) {
+                        GDataXMLElement *nameElement=[[user elementsForName:@"name"] objectAtIndex:0];
+                        NSString *name=[nameElement stringValue];
+                        
+                        GDataXMLElement *passWordElement=[[user elementsForName:@"password"] objectAtIndex:0];
+                        NSString *passWord=[passWordElement stringValue];
+                        
+                        NSLog(@"%@%@",name,passWord);
+                        
+                        if ([name isEqualToString:info.login]&&[passWord isEqualToString:info.password]) {
+                            NSMutableArray *songs = [[NSMutableArray alloc] init];
+                            Memo *mymemo=[[Memo alloc]init];
+                            
+                            self.fileArray = [[NSMutableArray alloc]initWithArray:[mymemo loadOldFile]];
+                            NSLog(@"my file is %@",self.fileArray);
+                            
+                            [songs removeAllObjects];
+                            for (NSString *song in self.fileArray)
+                            {
+                                NSString *soundFilePath=[mymemo.filePath stringByAppendingPathComponent:song];
+                                //初始化音频类 并且添加播放文件,把音频文件转换成url格式
+                                MDAudioFile *audioFile = [[MDAudioFile alloc] initWithPath:[NSURL fileURLWithPath:soundFilePath]];
+                                [songs addObject:audioFile];
+                                MCRelease(audioFile);
+                            }
+                            
+                            MDAudioPlayerController *mdaudio=nil;
+                            if ([self.fileArray count]==0) {
+                                mdaudio=[[MDAudioPlayerController alloc] init];
+                            }else{
+                                mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
+                            }
+                            
+                            [self.navigationController pushViewController:mdaudio animated:YES];
+                            
+                            MCRelease(songs);
+                            MCRelease(mymemo);
+                            MCRelease(mdaudio);
+                        }else if([name isEqualToString:info.login]&&![passWord isEqualToString:info.password])
+                        {
+                            UIAlertView *WarnAlertb=[[UIAlertView alloc] initWithTitle:@"Warn" message:@"密码错误" delegate:self cancelButtonTitle:@"YES!" otherButtonTitles:nil, nil];
+                            [WarnAlertb show];
+                            MCRelease(WarnAlertb);
+                        }
+                    }
+                }else{
                     UIAlertView *WarnAlertb=[[UIAlertView alloc] initWithTitle:@"Warn" message:@"用户名不存在" delegate:self cancelButtonTitle:@"YES!" otherButtonTitles:nil, nil];
                     [WarnAlertb show];
                     MCRelease(WarnAlertb);
-                }else{
-                    if([strPass  isEqualToString:info.password]){
-                        
-                        //            QRootElement *root=[Login createMainFrom];
-                        //            ViewController *view=[[ViewController alloc] initWithRoot:root];
-                        
-                        NSMutableArray *songs = [[NSMutableArray alloc] init];
-                        Memo *mymemo=[[Memo alloc]init];
-                        
-                        self.fileArray = [[NSMutableArray alloc]initWithArray:[mymemo loadOldFile]];
-                        NSLog(@"my file is %@",self.fileArray);
-                        
-                        [songs removeAllObjects];
-                        for (NSString *song in self.fileArray)
-                        {
-                            NSString *soundFilePath=[mymemo.filePath stringByAppendingPathComponent:song];
-                            //初始化音频类 并且添加播放文件,把音频文件转换成url格式
-                            MDAudioFile *audioFile = [[MDAudioFile alloc] initWithPath:[NSURL fileURLWithPath:soundFilePath]];
-                            [songs addObject:audioFile];
-                            MCRelease(audioFile);
-                        }
-                        
-                        MDAudioPlayerController *mdaudio=nil;
-                        if ([self.fileArray count]==0) {
-                             mdaudio=[[MDAudioPlayerController alloc] init];
-                        }else{
-                             mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
-                        }
-                        
-                        [self.navigationController pushViewController:mdaudio animated:YES];
-
-                        MCRelease(songs);
-                        MCRelease(mymemo);
-                        MCRelease(mdaudio);
-                    }else {
-                        UIAlertView *WarnAlertb=[[UIAlertView alloc] initWithTitle:@"Warn" message:@"密码错误" delegate:self cancelButtonTitle:@"YES!" otherButtonTitles:nil, nil];
-                        [WarnAlertb show];
-                        MCRelease(WarnAlertb);
-                    }
                 }
+                
+                //这里是使用jsonKIt解析对应的跳转
+//                if (strPass==nil||[strPass isEqualToString:@""]) {
+//                    UIAlertView *WarnAlertb=[[UIAlertView alloc] initWithTitle:@"Warn" message:@"用户名不存在" delegate:self cancelButtonTitle:@"YES!" otherButtonTitles:nil, nil];
+//                    [WarnAlertb show];
+//                    MCRelease(WarnAlertb);
+//                }else{
+//                    if([strPass  isEqualToString:info.password]){
+//                        
+//                        //            QRootElement *root=[Login createMainFrom];
+//                        //            ViewController *view=[[ViewController alloc] initWithRoot:root];
+//                        
+//                        NSMutableArray *songs = [[NSMutableArray alloc] init];
+//                        Memo *mymemo=[[Memo alloc]init];
+//                        
+//                        self.fileArray = [[NSMutableArray alloc]initWithArray:[mymemo loadOldFile]];
+//                        NSLog(@"my file is %@",self.fileArray);
+//                        
+//                        [songs removeAllObjects];
+//                        for (NSString *song in self.fileArray)
+//                        {
+//                            NSString *soundFilePath=[mymemo.filePath stringByAppendingPathComponent:song];
+//                            //初始化音频类 并且添加播放文件,把音频文件转换成url格式
+//                            MDAudioFile *audioFile = [[MDAudioFile alloc] initWithPath:[NSURL fileURLWithPath:soundFilePath]];
+//                            [songs addObject:audioFile];
+//                            MCRelease(audioFile);
+//                        }
+//                        
+//                        MDAudioPlayerController *mdaudio=nil;
+//                        if ([self.fileArray count]==0) {
+//                             mdaudio=[[MDAudioPlayerController alloc] init];
+//                        }else{
+//                             mdaudio= [[MDAudioPlayerController alloc] initWithSoundFiles:songs atPath:mymemo.filePath andSelectedIndex:0];
+//                        }
+//                        
+//                        [self.navigationController pushViewController:mdaudio animated:YES];
+//
+//                        MCRelease(songs);
+//                        MCRelease(mymemo);
+//                        MCRelease(mdaudio);
+//                    }else {
+//                        UIAlertView *WarnAlertb=[[UIAlertView alloc] initWithTitle:@"Warn" message:@"密码错误" delegate:self cancelButtonTitle:@"YES!" otherButtonTitles:nil, nil];
+//                        [WarnAlertb show];
+//                        MCRelease(WarnAlertb);
+//                    }
+//                }
             });
         });
         

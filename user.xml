@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Users>
+    <User id="001">
+        <name>mahailong</name>
+        <password>sunao</password>
+    </User>
+    <User id="002">
+        <name>majian</name>
+        <password>sunao</password>
+    </User>
+    <User id="003">
+        <name>zhangwei</name>
+        <password>sunao</password>
+    </User>
+    <User id="004">
+        <name>zhangjian</name>
+        <password>sunao</password>
+    </User>
+    <User id="005">
+        <name>liuqingxuan</name>
+        <password>sunao</password>
+    </User>
+</Users>
